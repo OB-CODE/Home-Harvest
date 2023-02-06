@@ -1,0 +1,40 @@
+.backing {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  background-image: url('./images/cropBackground.png');
+  background-size: contain;
+  max-height: 100%;
+  position: absolute;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.topBanner { 
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: center;
+
+
+  div {
+    font-size: 1.4rem;
+  }
+}
+
+.yearly {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 95%;
+  margin: auto;
+  margin-top: 30px;
+  background-color: rgb(245, 242, 242);
+}
+
+.months {
+  display: flex; 
+  justify-content: space-evenly;
+  flex-direction: row;
+
+}
