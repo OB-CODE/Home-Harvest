@@ -10,6 +10,7 @@ const Landing = ({ handleLocationChange, location }) => {
 
   const navigate = useNavigate()
   const handleClick = () => {
+      locationData()
       console.log(location)
       navigate('/planner')
 
