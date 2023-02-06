@@ -1,25 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from "react";
+import Landing from './lLanding';
+// import { Routes, Route, Link } from 'react-router-dom'
+
 
 function App() {
+
+  const [harvestList, adjustHarvest] = useState([])
+
+  const addCrop = crop => {
+    adjustHarvest([...harvestList, crop])
+  }
+
+  const removeCrop = indexOfCrops => {
+    const updatedCrops = harvestList.filter((crop, index) => index !== indexOfCrops)
+    adjustHarvest(updatedCrops)
+  }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Landing />
     </div>
   );
 }
 
 export default App;
+
