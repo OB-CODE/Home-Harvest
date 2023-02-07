@@ -1,23 +1,27 @@
 import locationData from "./locationAndWeatherFetch.js";
 import { Link, Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
-
+import Max from "./Max.js";
 import './Plants.scss';
 
 
 function Planner ({ addCrop, location, setLocation }) {
 
-  // const [weather, setWeather] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
+  const [weatherData, setWeatherData] = useState({})
+
+  useEffect(() => {
+    async function weatherCheck() {
+      console.log('1');
+      const weatherData = await locationData(location)
+      // console.log(weatherData);
+      console.log('3');
+      setWeatherData(weatherData)
+      setIsLoading(false)
+    };
+     weatherCheck()
+  },[location])
   
-  (async function weatherCheck() {
-    console.log('1');
-    const newlocation = await locationData(location)
-    console.log('3');
-
-    setLocation(newlocation.updatedLocation)
-  })();
-
-
 
   return (
     <div>
@@ -30,7 +34,7 @@ function Planner ({ addCrop, location, setLocation }) {
 
       <div className='topBanner'>
         <div>
-          <div >Current Location: {location} </div>
+          <div >Current Location: {weatherData.updatedLocation} </div>
           <div>Daily Temp Range:</div>
           <div>Estimated soil temperature</div>
         </div>
@@ -38,32 +42,8 @@ function Planner ({ addCrop, location, setLocation }) {
         <div>Weekly weather forecast</div>
       </div>
       
-      <div className='yearly'> Yearly Temperature Averages for
-        <div className='months'>
-          <div></div>
-          <div>JAN</div>
-          <div>FEB</div>
-          <div>MAR</div>
-          <div>APR</div>
-          <div>MAY</div>
-          <div>JUN</div>
-          <div>JUL</div>
-          <div>AUG</div>
-          <div>SEP</div>
-          <div>OCT</div>
-          <div>NOV</div>
-          <div>DEC</div>
-          <div></div>
-        </div>
-        <div className='maxAvg'>
-          {/* input 12 divs */}
-        </div>
-        <div className='minAvg'>
-          {/* input 12 divs */}
-        </div>
-        <div className='rainMM'>
-          {/* input 12 divs */}
-        </div>
+      <div className='yearly'> Yearly Averages for:   {weatherData.updatedLocation}
+        {isLoading === true ? <div>LOADING</div> : <Max weatherData={weatherData} ></Max>}
       </div>  
     </div>
   )
@@ -72,12 +52,7 @@ function Planner ({ addCrop, location, setLocation }) {
 export default Planner
 
 
-//   useEffect(() => {
-//   (async function processChanges() {
-//     const returnLocation = await locationData(location) 
-//     console.log(returnLocation);
-//   })()
-// },[location])
+
 
   // const addWeather = (location) => {
   //   const updated = locationData(location)

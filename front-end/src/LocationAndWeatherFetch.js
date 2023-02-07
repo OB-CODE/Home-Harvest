@@ -1,19 +1,18 @@
 // no capital as it is not a componenet
 
 async function locationData(location) {
-  console.log('2');
 
   const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${location}&key=8051551b575546e496c73d8f93e5779d`)
   const geoData = await response.json()
+  console.log('2');
 
-  console.log(geoData);
+  // console.log(geoData);
 
   const latLngObj = geoData.results[0].geometry
   const locatedFull = geoData.results[0].formatted
 
   const weatherResponse = await fetch(`https://archive-api.open-meteo.com/v1/archive?latitude=${latLngObj.lat}&longitude=${latLngObj.lng}&start_date=2022-01-01&end_date=2022-12-31&daily=temperature_2m_max&daily=temperature_2m_min&daily=precipitation_sum&timezone=auto`)
     
-    // `https://api.open-meteo.com/v1/forecast?latitude=-33.87&longitude=151.21&&daily=sunrise&timezone=auto&start_date=2022-01-01&end_date=2022-01-31`)
   const weatherData = await weatherResponse.json()
 
   console.log(weatherData)
@@ -484,7 +483,7 @@ async function locationData(location) {
     dec: {decMax: decTempMaxAvgs, decMin: decTempMinAvgs, decMM: decPrecipitationAvg }
    }
 
-  console.log(yearly);
+  // console.log(yearly);
 
   return yearly
    // returns are strings - need to use praseFloat on the output if you want a number.

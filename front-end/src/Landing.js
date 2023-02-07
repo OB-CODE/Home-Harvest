@@ -1,5 +1,4 @@
 import './Harvest.css';
-import locationData from "./locationAndWeatherFetch.js";
 import cropBackground from "./images/cropBackground.png";
 import { Link, Route, Routes } from 'react-router-dom';
 import React, { useState } from "react";
