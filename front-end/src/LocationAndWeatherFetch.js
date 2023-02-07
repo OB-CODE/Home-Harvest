@@ -4,7 +4,6 @@ async function locationData(location) {
 
   const response = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${location}&key=8051551b575546e496c73d8f93e5779d`)
   const geoData = await response.json()
-  console.log('2');
 
   // console.log(geoData);
 

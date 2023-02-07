@@ -1,26 +1,29 @@
 import locationData from "./locationAndWeatherFetch.js";
+import Loading from "./Loading";
+import Chart from "./Chart";
 import { Link, Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import Max from "./Max.js";
 import './Plants.scss';
 
 
+
 function Planner ({ addCrop, location, setLocation }) {
 
   const [isLoading, setIsLoading] = useState(true)
   const [weatherData, setWeatherData] = useState({})
+  const [monthAvgs, setMonthAvgs] = useState([])
 
   useEffect(() => {
     async function weatherCheck() {
-      console.log('1');
       const weatherData = await locationData(location)
-      // console.log(weatherData);
-      console.log('3');
       setWeatherData(weatherData)
       setIsLoading(false)
     };
      weatherCheck()
   },[location])
+
+
   
 
   return (
@@ -43,18 +46,15 @@ function Planner ({ addCrop, location, setLocation }) {
       </div>
       
       <div className='yearly'> Yearly Averages for:   {weatherData.updatedLocation}
-        {isLoading === true ? <div>LOADING</div> : <Max weatherData={weatherData} ></Max>}
+        {isLoading === true ? <Loading /> : <Max 
+        weatherData={weatherData}
+        monthAvgs={monthAvgs}
+        setMonthAvgs={setMonthAvgs}
+         ></Max>}
       </div>  
+      {isLoading === true ? <div> GIF </div> : <Chart weatherData={weatherData}/> }
     </div>
   )
 }
 
 export default Planner
-
-
-
-
-  // const addWeather = (location) => {
-  //   const updated = locationData(location)
-  //   // setWeather([...weather, updated])
-  // }
