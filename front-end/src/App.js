@@ -6,28 +6,26 @@ import Planner from './Planner';
 import HowTo from './HowTo';
 import Log from './Log';
 
-
 import { useNavigate } from "react-router-dom";
 
-
-
 function App() {
-  const [harvestList, adjustHarvest] = useState([])
-  const [location, inputLocation] = useState('')
+  const [harvestList, setHarvestList] = useState([])
+  const [location, setLocation] = useState('')
 
 
   const addCrop = crop => {
-    adjustHarvest([...harvestList, crop])
+    setHarvestList([...harvestList, crop])
   }
 
   const removeCrop = indexOfCrops => {
     const updatedCrops = harvestList.filter((crop, index) => index !== indexOfCrops)
-    adjustHarvest(updatedCrops)
+    setHarvestList(updatedCrops)
   }
 
   const handleLocationChange = event => {
-    inputLocation(event.target.value)
+    setLocation(event.target.value)
   }
+
 
   return (
     <>
@@ -37,7 +35,9 @@ function App() {
         location={location}
         />} />
         <Route path='/planner' element={<Planner
-         addCrop={addCrop}         
+         addCrop={addCrop} 
+         location={location} 
+         setLocation={setLocation}       
         />} />
         <Route path='/how-to' element={<HowTo />} />
         <Route path='/log' element={<Log />} />

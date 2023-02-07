@@ -1,4 +1,5 @@
 import './Harvest.css';
+import locationData from "./locationAndWeatherFetch.js";
 import cropBackground from "./images/cropBackground.png";
 import { Link, Route, Routes } from 'react-router-dom';
 import React, { useState } from "react";
@@ -6,16 +7,12 @@ import { useNavigate } from 'react-router-dom';
 const background = require("./images/cropBackground.png")
 
 
-const Landing = ({ handleLocationChange, location }) => {
+const Landing = ({ handleLocationChange, location, setLocation }) => {
 
   const navigate = useNavigate()
   const handleClick = () => {
-      locationData()
-      console.log(location)
       navigate('/planner')
-
   }
-
 
   return (
     <>  
