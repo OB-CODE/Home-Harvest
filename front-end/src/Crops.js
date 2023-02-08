@@ -74,17 +74,17 @@ function Crops () {
         </table>
       </div>
 
-      <div style={{paddingBottom: '15px', fontSize: '1.4rem', textAlign: 'center'}}>Select your search criteria below - select 1 to 3 of the options: 
+      <div style={{paddingBottom: '15px', fontSize: '1.4rem', textAlign: 'center'}}>Select  search below - select 1 to 3: 
         <Stack className='toggle' direction="row" spacing={4}>
           <ToggleButtonGroup
             value={Crops}
             onChange={handleCrops}
             aria-label="device"
           >
-            <ToggleButton value="fruit" aria-label="fruit">
+            <ToggleButton value="fruits" aria-label="fruits">
             Fruit: 🍎
             </ToggleButton>
-            <ToggleButton value="vegetable" aria-label="vegetable">
+            <ToggleButton value="vegetables" aria-label="vegetables">
             Veg: 🥕
             </ToggleButton>
             <ToggleButton value="herbs" aria-label="herbs">
@@ -96,7 +96,7 @@ function Crops () {
       <div className="selectFromcrops">
 
       {/* {displayHerbs === true ?<div>HERBS</div> : <div></div>} */}
-      {displayHerbs === true ? <section className='eachSection'>
+      {Crops.includes('herbs') === true ? <section className='eachSection'>
         {herbs.map((herb, index) => 
           <div className='cardContainer'>            
             <div key={index} className='cropName' >{herb.name}</div>
@@ -116,7 +116,7 @@ function Crops () {
       </section> : <div></div> }
 
       {/* {displayVegetables === true ?<div>VEGETABLES</div> : <div></div>} */}
-      {displayVegetables === true ? <section className='eachSection' >
+      {Crops.includes('vegetables') === true ? <section className='eachSection' >
         {vegetables.map((vegetable, i) => 
           <div className='cardContainer'>            
             <div key={i} className='cropName' >{vegetable.name}</div>
@@ -136,7 +136,7 @@ function Crops () {
       </section> : <div></div> }
 
       {/* {displayFruits === true ?<div>FRUITS</div> : <div></div>} */}
-      {displayFruits === true ? <section className='eachSection' >
+      {Crops.includes('fruits') === true ? <section className='eachSection' >
         {fruits.map((fruit, j) => 
           <div className='cardContainer'>            
             <div key={j} className='cropName' >{fruit.name}</div>
@@ -156,6 +156,8 @@ function Crops () {
       </section> : <div></div> }
 
       </div>
+      <div className='spaceHolder'></div>
+
     </div>
   )
 }
