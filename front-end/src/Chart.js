@@ -1,5 +1,6 @@
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
 import './Plants.scss';
+import classNames from "react";
 
 
 import React from 'react'
@@ -58,14 +59,20 @@ const Chart = ({ weatherData }) => {
 
 
   return (
-    <div className="chartContainer">
-      <ResponsiveContainer >
-        <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
-          <Line type="monotone" dataKey="high" stroke="#8884d8" />
-          <Line type="monotone" dataKey="low" stroke="#8884d8" />
-          <Line type="monotone" dataKey="mm" stroke="#74d7" />
+    <div className='chartContainer' >
+        <div>Historical Averages - Per week</div>
+        <p>Chart Key: <span></span> Avg Max Temperature:  <span className='red'></span>
+        <span></span> Avg Min Temperature:  <span className='blue'></span>
+        <span></span> Avg Rainfall MM:  <span className='darkBlue'></span>
+        </p>
 
-          <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart data={data} margin={{ top: 5, right: 20, bottom: 5, left: 0 }}>
+          <Line type="monotone" dataKey="high" stroke="#DC143C" activeDot={{ r: 8 }}/>
+          <Line type="monotone" dataKey="low" stroke="#00FFFF" />
+          <Line type="monotone" dataKey="mm" stroke="#00008B" />
+
+          <CartesianGrid  strokeDasharray="5 5" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />

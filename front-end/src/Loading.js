@@ -71,6 +71,7 @@ const Loading = () => {
       </tbody>
   </table>
   <div className='loadingWeather'>💧🌞🌩❄🌨💧 ---  LOADING   --- 💧🌨❄🌩🌞💧</div> 
+ <img className='chartContainer' src="https://media.istockphoto.com/id/1072372786/video/young-plant-in-the-rain.jpg?s=640x640&k=20&c=0JPpUFbtZn2ZMRcWriJbNj3AwxcTyzZF3Mti-92UULU=" alt="" />
 </div>
   )
 }
