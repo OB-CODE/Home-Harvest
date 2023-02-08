@@ -1,53 +1,161 @@
 import React from 'react'
 import { allCrops } from './CropImagesAll'
+import Stack from '@mui/material/Stack';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import { useState } from "react";
+
 
 
 function Crops () {
 
   const herbs = [
-    { name: 'Basil', airTemplow: 21, airTempHigh: 29, tillHarvest: 60, depth: 0.6, frostT: false, sun: 'Partial shade', distance: '30-55'},
-    { name: 'Rosemary', airTemplow: 15, airTempHigh: 21, tillHarvest: 120, depth: 0.6, frostT: true, sun: 'Full sun', distance: '45-60'},
-    { name: 'Sage', airTemplow: 15, airTempHigh: 21, tillHarvest: 90, depth: 0.6, frostT: true, sun: 'Full sun', distance: '45-60'},
-    { name: 'Thyme', airTemplow: 15, airTempHigh: 21, tillHarvest: 100, depth: 0.6, frostT: true, sun: 'Full sun', distance: '30-45'},
-    { name: 'Chives', airTemplow: 15, airTempHigh: 21, tillHarvest: 60, depth: 0.6, frostT: true, sun: 'Partial shade', distance: '15-30'},
+    { name: 'Basil', airTemplow: 21, airTempHigh: 29, tillHarvest: 60, depth: 0.6, frostT: false, sun: false, distance: '30-55'},
+    { name: 'Rosemary', airTemplow: 15, airTempHigh: 21, tillHarvest: 120, depth: 0.6, frostT: true, sun: true, distance: '45-60'},
+    { name: 'Sage', airTemplow: 15, airTempHigh: 21, tillHarvest: 90, depth: 0.6, frostT: true, sun: true, distance: '45-60'},
+    { name: 'Thyme', airTemplow: 15, airTempHigh: 21, tillHarvest: 100, depth: 0.6, frostT: true, sun: true, distance: '30-45'},
+    { name: 'Chives', airTemplow: 15, airTempHigh: 21, tillHarvest: 60, depth: 0.6, frostT: true, sun: false, distance: '15-30'},
   ]
   
   const vegetables = [
-    { name: 'Tomatoes', airTemplow: 20, airTempHigh: 30, tillHarvest: 80, depth: 3, frostT: false, sun: 'Full sun', distance: '60-90'},
-    { name: 'Carrots', airTemplow: 15, airTempHigh: 20, tillHarvest: 75, depth: 2, frostT: true, sun: 'Full sun', distance: '15-30'},
-    { name: 'Peppers', airTemplow: 20, airTempHigh: 30, tillHarvest: 80, depth: 3, frostT: false, sun: 'Full sun', distance: '60-90'},
-    { name: 'Lettuce', airTemplow: 10, airTempHigh: 20, tillHarvest: 45, depth: 2, frostT: true, sun: 'Partial shade', distance: '30-45'},
-    { name: 'Beans', airTemplow: 20, airTempHigh: 30, tillHarvest: 55, depth: 6, frostT: true, sun: 'Full sun', distance: '45-60'},
+    { name: 'Tomatoes', airTemplow: 20, airTempHigh: 30, tillHarvest: 80, depth: 3, frostT: false, sun: true, distance: '60-90'},
+    { name: 'Carrots', airTemplow: 15, airTempHigh: 20, tillHarvest: 75, depth: 2, frostT: true, sun: true, distance: '15-30'},
+    { name: 'Peppers', airTemplow: 20, airTempHigh: 30, tillHarvest: 80, depth: 3, frostT: false, sun: true, distance: '60-90'},
+    { name: 'Lettuce', airTemplow: 10, airTempHigh: 20, tillHarvest: 45, depth: 2, frostT: true, sun: false, distance: '30-45'},
+    { name: 'Beans', airTemplow: 20, airTempHigh: 30, tillHarvest: 55, depth: 6, frostT: true, sun: true, distance: '45-60'},
   ]
   
   const fruits = [
-    { name: 'Strawberries', airTemplow: 10, airTempHigh: 15, tillHarvest: 105, depth: 5, frostT: true, sun: 'Full sun', distance: '35-45'},
-    { name: 'Blueberries', airTemplow: 10, airTempHigh: 15, tillHarvest: 165, depth: 15, frostT: true, sun: 'Partial shade', distance: '2'},
-    { name: 'Raspberries', airTemplow: 5, airTempHigh: 10, tillHarvest: 135, depth: 15, frostT: true, sun: 'Partial shade', distance: '2'},
-    { name: 'Blackberries', airTemplow: 5, airTempHigh: 10, tillHarvest: 135, depth: 15, frostT: true, sun: 'Partial shade', distance: '2'},
-    { name: 'Cherries', airTemplow: 5, airTempHigh: 10, tillHarvest: 135, depth: 15, frostT: true, sun: 'Full sun', distance: '5'},
+    { name: 'Strawberries', airTemplow: 10, airTempHigh: 15, tillHarvest: 105, depth: 5, frostT: true, sun: true, distance: '35-45'},
+    { name: 'Blueberries', airTemplow: 10, airTempHigh: 15, tillHarvest: 165, depth: 15, frostT: true, sun: false, distance: '2'},
+    { name: 'Raspberries', airTemplow: 5, airTempHigh: 10, tillHarvest: 135, depth: 15, frostT: true, sun: false, distance: '2'},
+    { name: 'Blackberries', airTemplow: 5, airTempHigh: 10, tillHarvest: 135, depth: 15, frostT: true, sun: false, distance: '2'},
+    { name: 'Cherries', airTemplow: 5, airTempHigh: 10, tillHarvest: 135, depth: 15, frostT: true, sun: true, distance: '5'},
   ]
+
+  let displayHerbs = true
+  let displayVegetables = true
+  let displayFruits = true
+
+  const [Crops, setCrops] = useState(['herbs'] );
+
+  const handleCrops = (event, newCrops) => {
+    if (newCrops.length) {
+      setCrops(newCrops);
+    }
+  };
 
   return (
     <div className='holdAllCrops'>
       <div className="userCrops">
         Your Crops to Plant for the Year
       </div>
-      <section className="selectFromcrops">
+
+      <div className='months'>
+        <table style={{paddingBottom: '10px'}} border = "1" cellpadding = "2" cellspacing = "2">
+          <tbody>
+            Crop Key:
+            <tr></tr>
+              <td className='emoji'> 🌱  </td>
+              <td className='emoji'> 🕛  </td>
+              <td className='emoji'> 👇  </td>
+              <td className='emoji'> ❄️  </td>
+              <td className='emoji'>☀️ / 🌤️ </td>
+              <td className='emoji'>📏 </td>
+            <tr></tr>
+              <td> Sow / grow temp ℃</td>
+              <td>Days till harvest</td>
+              <td>Plant depth cm</td>
+              <td>Frost resistance</td>
+              <td>Full sun / Shade</td>
+              <td>Distance apart cm</td>
+            <tr ></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style={{paddingBottom: '15px', fontSize: '1.4rem', textAlign: 'center'}}>Select your search criteria below - select 1 to 3 of the options: 
+        <Stack className='toggle' direction="row" spacing={4}>
+          <ToggleButtonGroup
+            value={Crops}
+            onChange={handleCrops}
+            aria-label="device"
+          >
+            <ToggleButton value="fruit" aria-label="fruit">
+            Fruit: 🍎
+            </ToggleButton>
+            <ToggleButton value="vegetable" aria-label="vegetable">
+            Veg: 🥕
+            </ToggleButton>
+            <ToggleButton value="herbs" aria-label="herbs">
+            Herbs: 🌿
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Stack>
+      </div>
+      <div className="selectFromcrops">
+
+      {/* {displayHerbs === true ?<div>HERBS</div> : <div></div>} */}
+      {displayHerbs === true ? <section className='eachSection'>
         {herbs.map((herb, index) => 
-        <div className='cropCards'>
-          <div key={index} className='cropName'>Name: {herb.name}</div>
-          <div key={index} className='cropLow'>🌱🌡️ {herb.airTemplow} - {herb.airTempHigh} </div>
-          <div key={index} className='tillHarvest'>🍽️ {herb.tillHarvest}</div>
-          <div key={index} className='tillHarvest'>🕳️{herb.depth}</div>
-          <div key={index} className='tillHarvest'>❄️{herb.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
-          <div key={index} className='tillHarvest'>☀️{herb.sun}</div>
-          <div key={index} className='tillHarvest'>📏{herb.distance}</div>
-          <img className='cropImage' src={allCrops[herb.name]} alt="" />
-          <button>Add to Planner</button>
+          <div className='cardContainer'>            
+            <div key={index} className='cropName' >{herb.name}</div>
+            <div className='cropCards' style={{backgroundImage: `url(${allCrops[herb.name]})`, backgroundRepeat: 'no-repeat'}}>
+              <div>
+                <div key={index} className='cropLow'>🌱🟰 {herb.airTemplow} - {herb.airTempHigh} </div>
+                <div key={index} className='tillHarvest'>🕛🟰 {herb.tillHarvest}</div>
+                <div key={index} className='tillHarvest'>👇🟰 {herb.depth}</div>
+                <div key={index} className='tillHarvest'>❄️🟰 {herb.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
+                <div key={index} className='tillHarvest'>☀️🟰 {herb.sun === true ? <span>✅</span> : <span>🌤️</span>}</div>
+                <div key={index} className='tillHarvest'>📏🟰 {herb.distance}</div>           
+              </div>
+            </div>
+          <button class="button-55">Add to Planner</button>
         </div>
         )}
-      </section>
+      </section> : <div></div> }
+
+      {/* {displayVegetables === true ?<div>VEGETABLES</div> : <div></div>} */}
+      {displayVegetables === true ? <section className='eachSection' >
+        {vegetables.map((vegetable, i) => 
+          <div className='cardContainer'>            
+            <div key={i} className='cropName' >{vegetable.name}</div>
+            <div className='cropCards' style={{backgroundImage: `url(${allCrops[vegetable.name]})`, backgroundRepeat: 'no-repeat'}}>
+              <div>
+                <div key={i} className='cropLow'>🌱🟰 {vegetable.airTemplow} - {vegetable.airTempHigh} </div>
+                <div key={i} className='tillHarvest'>🕛🟰 {vegetable.tillHarvest}</div>
+                <div key={i} className='tillHarvest'>👇🟰 {vegetable.depth}</div>
+                <div key={i} className='tillHarvest'>❄️🟰 {vegetable.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
+                <div key={i} className='tillHarvest'>☀️🟰 {vegetable.sun === true ? <span>✅</span> : <span>🌤️</span>}</div>
+                <div key={i} className='tillHarvest'>📏🟰 {vegetable.distance}</div>           
+              </div>
+            </div>
+          <button class="button-55">Add to Planner</button>
+        </div>
+        )}
+      </section> : <div></div> }
+
+      {/* {displayFruits === true ?<div>FRUITS</div> : <div></div>} */}
+      {displayFruits === true ? <section className='eachSection' >
+        {fruits.map((fruit, j) => 
+          <div className='cardContainer'>            
+            <div key={j} className='cropName' >{fruit.name}</div>
+            <div className='cropCards' style={{backgroundImage: `url(${allCrops[fruit.name]})`, backgroundRepeat: 'no-repeat'}}>
+              <div>
+                <div key={j} className='cropLow'>🌱🟰 {fruit.airTemplow} - {fruit.airTempHigh} </div>
+                <div key={j} className='tillHarvest'>🕛🟰 {fruit.tillHarvest}</div>
+                <div key={j} className='tillHarvest'>👇🟰 {fruit.depth}</div>
+                <div key={j} className='tillHarvest'>❄️🟰 {fruit.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
+                <div key={j} className='tillHarvest'>☀️🟰 {fruit.sun === true ? <span>✅</span> : <span>🌤️</span>}</div>
+                <div key={j} className='tillHarvest'>📏🟰 {fruit.distance}</div>           
+              </div>
+            </div>
+          <button class="button-55">Add to Planner</button>
+        </div>
+        )}
+      </section> : <div></div> }
+
+      </div>
     </div>
   )
 }

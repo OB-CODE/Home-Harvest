@@ -1,14 +1,49 @@
-.backing {
-  height: 100%;
-  width: 100%;
-  max-width: 100%;
-  background-image: url('./images/cropBackground.png');
-  background-size: contain;
-  max-height: 100%;
-  position: absolute;
-  opacity: 0.2;
-  z-index: -1;
+// body { 
+//   background-color: rgba(0, 0, 0, .1);
+//   background: url('./images/cropBackground.png')
+//   no-repeat center center fixed; 
+//   -webkit-background-size: cover;
+//   -moz-background-size: cover;
+//   -o-background-size: cover;
+//   background-size: cover;
+// }
+
+img.bg {
+  background-color: rgba(0, 0, 0, .1);
 }
+
+.backing {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+  z-index: -1;
+  opacity: .2;
+
+}
+.backing img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+
+// .backing {
+//   height: 100%;
+//   width: 100%;
+//   max-width: 100%;
+//   background-image: url('./images/cropBackground.png');
+//   background-size: contain;
+//   max-height: 100%;
+//   position: absolute;
+//   opacity: 0.2;
+//   z-index: -1;
+// }
 
 .topBanner { 
   display: flex;
@@ -19,6 +54,15 @@
 
   div {
     font-size: 1.4rem;
+  }
+}
+
+.toggle {
+  display: flex;
+  justify-content: center;
+
+  button {
+    font-size: 2.2rem;
   }
 }
 
@@ -33,10 +77,31 @@
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
+table {
+  max-width: 100%;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: rgb(245, 242, 242, .7);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin-bottom: 15px;
+
+  td {
+    text-align: center;
+    background-color: rgba(164, 163, 163, 0.2);
+    
+  }
+}
+
+.emoji {
+  font-size: 4rem;
+}
+
+
 .months {
   display: flex; 
   justify-content: space-evenly;
   flex-direction: column;
+  align-items: center
 }
 
 .loadingWeather {
@@ -55,7 +120,7 @@
 
 .chartContainer {
   height: 500px;
-  background-color: #fff;
+  background-color: rgba(241, 239, 239, 0.5);
   display: flex;
   flex-direction: column;
   padding-bottom: 90px;
@@ -81,32 +146,45 @@
 .red {
   background-color: #DC143C;
   margin-left: 5px;
+  border: 1px black solid;
 }
 .blue {
   background-color: #00FFFF;
   margin-left: 5px;
+  border: 1px black solid;
 }
 .darkBlue {
   background-color: #00008B;
   margin-left: 5px;
+  border: 1px black solid;
 }
 
 .boxed {
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.growing {
+.growing {  
+  width: 800px;
   max-width: 100%;
-  height: 600px;
+  height: 250px;
   background: no-repeat;
   background-image: url('./images/Growing1.png');
-  background-size: contain;
-  margin: 20px;
+  background-size: cover;
+  margin: 20px auto;
+  z-index: 1;
+}
+
+.cardContainer {
+  // max-width: 25%;
+
+  text-align: center;
+  background-color: rgba(190, 161, 112, 0.468);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
 .holdAllCrops {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding-top: 20px;
   max-width: 95%;
   margin: auto;
@@ -114,22 +192,90 @@
 
 .selectFromcrops {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding-bottom: 50px;
+}
+
+.eachSection{ 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .cropCards {
-  max-width: 20%;
-  border: 1px dotted black;
-  background-color: rgba(163, 250, 212, 0.2);
+  display: flex;
+  width: 200px;
+  z-index: -1;
+  background-size: 60%;
+  background-position: bottom right;
+  background-color: rgba(255, 255, 255, 0.2);
 
-  .cropName {
-    text-align: center;
-    text-decoration: underline;
-
+  div {
+    text-align: left;
   }
+}
 
-  img {
-    max-width: 100%;
-    max-height: 15vh;
-    padding-left: 20px;
-  }
+.cropName {
+  text-align: center;
+  color: white;
+  font-size: 1.5rem;
+  padding-bottom: 5px;
+
+}
+
+.cardImg {
+  display: flex;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: 40px;
+  width: 160px;
+  height: 180px;
+  z-index: -1;
+  background-position: right bottom;
+}
+
+/* CSS */
+.button-55 {
+  display: flex;
+  align-items: center;
+  align-self: center;
+  background-color: #fff;
+  background-image: none;
+  background-position: 0 90%;
+  background-repeat: repeat no-repeat;
+  background-size: 3px 2px;
+  border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+  border-style: solid;
+  border-width: 2px;
+  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-sizing: border-box;
+  color: #41403e;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Neucha, sans-serif;
+  font-size: 1rem;
+  line-height: 23px;
+  outline: none;
+  padding: .30rem;
+  margin: .25rem;
+  text-decoration: none;
+  transition: all 235ms ease-in-out;
+  border-bottom-left-radius: 15px 255px;
+  border-bottom-right-radius: 225px 15px;
+  border-top-left-radius: 255px 15px;
+  border-top-right-radius: 15px 225px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-55:hover {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+  transform: translate3d(0, 2px, 0);
+}
+
+.button-55:focus {
+  box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
 }

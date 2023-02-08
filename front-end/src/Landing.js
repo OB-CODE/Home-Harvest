@@ -1,9 +1,9 @@
 import './Harvest.css';
+import Background from "./images/cropBackground.png";
 import cropBackground from "./images/cropBackground.png";
 import { Link, Route, Routes } from 'react-router-dom';
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
-const background = require("./images/cropBackground.png")
 
 
 const Landing = ({ handleLocationChange, location, setLocation }) => {
@@ -15,10 +15,14 @@ const Landing = ({ handleLocationChange, location, setLocation }) => {
 
   return (
     <>  
+      <div className="backing">
+        <img src={`${Background}`} alt="" />
+      </div>
       <div className="backAll"></div>
       <div className='landing'>
         <header>
           <Link className='shadow' to='/how-to'>How To Use</Link>
+          <Link className='shadow' to='/'>Home</Link>
           <Link className='shadow' to='/log'>Log In / Sign Up</Link>
         </header>
 

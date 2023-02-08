@@ -28,7 +28,7 @@ function  Max ({ weatherData }) {
 
   return (
     <div className='months'>
-      <table border = "1" cellpadding = "5" cellspacing = "5">
+      <table border = "1" cellpadding = "2" cellspacing = "2">
         <tbody>
           <tr>
             <th></th>

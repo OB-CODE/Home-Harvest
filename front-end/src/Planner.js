@@ -6,7 +6,7 @@ import { Link, Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import Max from "./Max.js";
 import './Plants.scss';
-
+import Background from "./images/cropBackground.png";
 
 
 function Planner ({ addCrop, location, setLocation }) {
@@ -29,7 +29,9 @@ function Planner ({ addCrop, location, setLocation }) {
 
   return (
     <div>
-      <div className="backing"></div>
+      <div className="backing">
+        <img src={`${Background}`} alt="" />
+      </div>
       <header>
         <Link className='shadow' to='how-to'>How To Use</Link>
         <Link className='shadow' to='/'>Home</Link>
