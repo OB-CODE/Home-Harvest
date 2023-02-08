@@ -70,7 +70,7 @@ const Loading = () => {
         </tr>
       </tbody>
   </table>
-  <div className='loadingWeather'>💧🌞🌩❄🌨💧 ---  LOADING   --- 💧🌨❄🌩🌞💧</div> 
+  <div className='loadingWeather'></div> 
  <div className='growing'></div>
 
 </div>
