@@ -29,7 +29,7 @@
   max-width: 90%;
   margin: auto;
   margin-top: 30px;
-  background-color: rgb(245, 242, 242);
+  background-color: rgb(245, 242, 242, .7);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
@@ -106,7 +106,30 @@
 
 .holdAllCrops {
   display: flex;
+  flex-direction: row;
   padding-top: 20px;
   max-width: 95%;
   margin: auto;
+}
+
+.selectFromcrops {
+  display: flex;
+}
+
+.cropCards {
+  max-width: 20%;
+  border: 1px dotted black;
+  background-color: rgba(163, 250, 212, 0.2);
+
+  .cropName {
+    text-align: center;
+    text-decoration: underline;
+
+  }
+
+  img {
+    max-width: 100%;
+    max-height: 15vh;
+    padding-left: 20px;
+  }
 }

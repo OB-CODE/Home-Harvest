@@ -1,4 +1,5 @@
 import React from 'react'
+import { allCrops } from './CropImagesAll'
 
 
 function Crops () {
@@ -34,15 +35,15 @@ function Crops () {
       </div>
       <section className="selectFromcrops">
         {herbs.map((herb, index) => 
-        <div>
+        <div className='cropCards'>
           <div key={index} className='cropName'>Name: {herb.name}</div>
           <div key={index} className='cropLow'>🌱🌡️ {herb.airTemplow} - {herb.airTempHigh} </div>
           <div key={index} className='tillHarvest'>🍽️ {herb.tillHarvest}</div>
           <div key={index} className='tillHarvest'>🕳️{herb.depth}</div>
-          <div key={index} className='tillHarvest'>❄️{herb.frostT}</div>
+          <div key={index} className='tillHarvest'>❄️{herb.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
           <div key={index} className='tillHarvest'>☀️{herb.sun}</div>
           <div key={index} className='tillHarvest'>📏{herb.distance}</div>
-          <img src='./images/Basil.png' alt="" />
+          <img className='cropImage' src={allCrops[herb.name]} alt="" />
           <button>Add to Planner</button>
         </div>
         )}
