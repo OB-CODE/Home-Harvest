@@ -1,6 +1,7 @@
 import locationData from "./locationAndWeatherFetch.js";
 import Loading from "./Loading";
 import Chart from "./Chart";
+import Crops from "./Crops";
 import { Link, Route, Routes } from 'react-router-dom';
 import React, { useEffect, useState } from "react";
 import Max from "./Max.js";
@@ -52,7 +53,8 @@ function Planner ({ addCrop, location, setLocation }) {
         setMonthAvgs={setMonthAvgs}
          ></Max>}
       </div>  
-      {isLoading === true ? <div> GIF </div> : <Chart weatherData={weatherData}/> }
+      {isLoading === true ? <div></div> : <Chart weatherData={weatherData}/> }
+      <Crops />
     </div>
   )
 }

@@ -63,7 +63,7 @@ const Chart = ({ weatherData }) => {
         <div>Historical Averages - Per week</div>
         <p>Chart Key: <span></span> Avg Max Temperature:  <span className='red'></span>
         <span></span> Avg Min Temperature:  <span className='blue'></span>
-        <span></span> Avg Rainfall MM:  <span className='darkBlue'></span>
+        <span></span> Avg Rainfall MM:<span className='darkBlue'></span>
         </p>
 
       <ResponsiveContainer width="100%" height="100%">
