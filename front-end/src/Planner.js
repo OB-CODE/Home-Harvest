@@ -9,7 +9,7 @@ import './Plants.scss';
 import Background from "./images/cropBackground.png";
 
 
-function Planner ({ addCrop, location, setLocation }) {
+function Planner ({ location, setLocation }) {
 
   const [isLoading, setIsLoading] = useState(true)
   const [weatherData, setWeatherData] = useState({})
@@ -24,7 +24,16 @@ function Planner ({ addCrop, location, setLocation }) {
      weatherCheck()
   },[location])
 
+  const [harvestList, setHarvestList] = useState([])
 
+  const addCrop = crop => {
+    setHarvestList([...harvestList, crop])
+  }
+
+  const removeCrop = indexOfCrops => {
+    const updatedCrops = harvestList.filter((crop, index) => index !== indexOfCrops)
+    setHarvestList(updatedCrops)
+  }
   
 
   return (
@@ -56,7 +65,11 @@ function Planner ({ addCrop, location, setLocation }) {
          ></Max>}
       </div>  
       {isLoading === true ? <div></div> : <Chart weatherData={weatherData}/> }
-      <Crops />
+      <Crops 
+      harvestList={harvestList}
+      addCrop={addCrop}
+      removeCrop={removeCrop}
+      />
     </div>
   )
 }

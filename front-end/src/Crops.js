@@ -7,7 +7,7 @@ import { useState } from "react";
 
 
 
-function Crops () {
+function Crops ({ addCrop, removeCrop, harvestList  }) {
 
   const herbs = [
     { name: 'Basil', airTemplow: 21, airTempHigh: 29, tillHarvest: 60, depth: 0.6, frostT: false, sun: false, distance: '30-55'},
@@ -33,10 +33,8 @@ function Crops () {
     { name: 'Cherries', airTemplow: 5, airTempHigh: 10, tillHarvest: 135, depth: 15, frostT: true, sun: true, distance: '5'},
   ]
 
-  let displayHerbs = true
-  let displayVegetables = true
-  let displayFruits = true
 
+  // For the buttons:
   const [Crops, setCrops] = useState(['herbs'] );
 
   const handleCrops = (event, newCrops) => {
@@ -95,7 +93,6 @@ function Crops () {
       </div>
       <div className="selectFromcrops">
 
-      {/* {displayHerbs === true ?<div>HERBS</div> : <div></div>} */}
       {Crops.includes('herbs') === true ? <section className='eachSection'>
         {herbs.map((herb, index) => 
           <div className='cardContainer'>            
@@ -110,12 +107,14 @@ function Crops () {
                 <div key={index} className='tillHarvest'>📏🟰 {herb.distance}</div>           
               </div>
             </div>
-          <button class="button-55">Add to Planner</button>
+          <button class="button-55"
+            key={index}
+            onClick={() => addCrop(herb)}
+          >Add {herb.name}</button>
         </div>
         )}
       </section> : <div></div> }
 
-      {/* {displayVegetables === true ?<div>VEGETABLES</div> : <div></div>} */}
       {Crops.includes('vegetables') === true ? <section className='eachSection' >
         {vegetables.map((vegetable, i) => 
           <div className='cardContainer'>            
@@ -130,12 +129,14 @@ function Crops () {
                 <div key={i} className='tillHarvest'>📏🟰 {vegetable.distance}</div>           
               </div>
             </div>
-          <button class="button-55">Add to Planner</button>
+          <button class="button-55" 
+            key={i}
+            onClick={() => addCrop(vegetable)}
+          >Add {vegetable.name} </button>
         </div>
         )}
       </section> : <div></div> }
 
-      {/* {displayFruits === true ?<div>FRUITS</div> : <div></div>} */}
       {Crops.includes('fruits') === true ? <section className='eachSection' >
         {fruits.map((fruit, j) => 
           <div className='cardContainer'>            
@@ -150,7 +151,11 @@ function Crops () {
                 <div key={j} className='tillHarvest'>📏🟰 {fruit.distance}</div>           
               </div>
             </div>
-          <button class="button-55">Add to Planner</button>
+          <button class="button-55"
+            key={j}
+            onClick={() => addCrop(fruit)}
+            >Add {fruit.name}
+          </button>
         </div>
         )}
       </section> : <div></div> }
