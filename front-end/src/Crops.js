@@ -1,9 +1,11 @@
 import React from 'react'
+import UserHarvest from "./UserHarvest";
 import { allCrops } from './CropImagesAll'
 import Stack from '@mui/material/Stack';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useState } from "react";
+
 
 
 
@@ -48,6 +50,13 @@ function Crops ({ addCrop, removeCrop, harvestList  }) {
       <div className="userCrops">
         Your Crops to Plant for the Year
       </div>
+
+      <UserHarvest 
+        removeCrop={removeCrop}
+        harvestList={harvestList}
+      />
+
+      
 
       <div className='months'>
         <table style={{paddingBottom: '10px'}} border = "1" cellpadding = "2" cellspacing = "2">
