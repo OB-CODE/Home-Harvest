@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import Max from "./Max.js";
 import './Plants.scss';
 import Background from "./images/cropBackground.png";
+import PlanHeader from "./PlanHeader";
 
 function Planner ({ location, setLocation }) {
 
@@ -56,20 +57,15 @@ function Planner ({ location, setLocation }) {
         <img src={`${Background}`} alt="" />
       </div>
       <header>
-        <Link className='shadow' to='how-to'>How To Use</Link>
+        <Link className='shadow' to='/how-to'>How To Use</Link>
         <Link className='shadow' to='/'>Home</Link>
         <Link className='shadow' to='/log'>Log In / Sign Up</Link>
       </header>
 
-      <div className='topBanner'>
-        <div>
-          <div >Current Location: {weatherData.updatedLocation} </div>
-          <div>Daily Temp Range:</div>
-          <div>Estimated soil temperature</div>
-        </div>
-        <div>Lets plan your crops!</div>
-        <div>Weekly weather forecast</div>
-      </div>
+        <PlanHeader
+          weatherData={weatherData}
+          location={location}
+         />
       
       <div className='yearly'> Yearly Averages for:   {weatherData.updatedLocation}
         {isLoading === true ? <Loading /> : 

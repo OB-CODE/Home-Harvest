@@ -5,6 +5,10 @@ import Landing from './Landing';
 import Planner from './Planner';
 import HowTo from './HowTo';
 import Log from './Log';
+import './Plants.scss';
+
+
+
 
 import { useNavigate } from "react-router-dom";
 

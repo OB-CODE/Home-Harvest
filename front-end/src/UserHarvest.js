@@ -16,34 +16,28 @@ const UserHarvest = ({ removeCrop, harvestList, monthAvgs }) => {
           <tbody>
             <tr>
               <th></th>
-              <th></th>
-              <th>JAN</th>
-              <th>FEB</th>
-              <th>MAR</th>
-              <th>APR</th>
-              <th>MAY</th>
-              <th>JUN</th>
-              <th>JUL</th>
-              <th>AUG</th>
-              <th>SEP</th>
-              <th>OCT</th>
-              <th>NOV</th>
-              <th>DEC</th>
+              <th className='tableGap'>JAN</th>
+              <th className='tableGap'>FEB</th>
+              <th className='tableGap'>MAR</th>
+              <th className='tableGap'>APR</th>
+              <th className='tableGap'>MAY</th>
+              <th className='tableGap'>JUN</th>
+              <th className='tableGap'>JUL</th>
+              <th className='tableGap'>AUG</th>
+              <th className='tableGap'>SEP</th>
+              <th className='tableGap'>OCT</th>
+              <th className='tableGap'>NOV</th>
+              <th className='tableGap'>DEC</th>
             </tr>
           
           {harvestList.map((eachCrop, index) => 
             <tr>
-              <th>
-                <tr style={{textAlign: 'center'}}>{eachCrop.name} </tr>
+              <th className='centerTrial'>
+                <tr>{eachCrop.name} </tr>
                 <tr><button
                   key={index}
                   onClick={() => removeCrop(eachCrop.name)}
                 >Remove</button></tr>
-              </th>
-              <th>
-              <tr>
-                  Sow:
-              </tr>
               </th>
               <th>
               {monthAvgs[0] > eachCrop.airTemplow && monthAvgs[0] < eachCrop.airTempHigh ? <tr className='sowColour'>✅</tr> : <tr></tr>}

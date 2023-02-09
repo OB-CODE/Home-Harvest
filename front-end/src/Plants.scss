@@ -8,6 +8,9 @@
 //   background-size: cover;
 // }
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@200&display=swap');
+
+
 img.bg {
   background-color: rgba(0, 0, 0, .1);
   text-align: center;
@@ -59,13 +62,25 @@ img.bg {
 // }
 
 .topBanner { 
+  max-width: 90%;
+  margin: auto;
   display: flex;
   justify-content: space-evenly;
   flex-direction: row;
   align-items: center;
+  gap: 2vw;
 
+  h1{
+    position: relative;  
+  }
+  img{
+    max-width: 100%;
+  }
 
   div {
+    text-align: center;
+    align-items: center;
+    width: 33%;
     font-size: 1.4rem;
   }
 }
@@ -100,14 +115,23 @@ table {
   background-color: rgb(245, 242, 242, .7);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   margin-bottom: 15px;
+  align-items: center;
 
   td {
     text-align: center;
-    background-color: rgba(164, 163, 163, 0.2);
-    
+    background-color: rgba(228, 249, 220, 0.186);
   }
 }
 
+.centerTrial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tableGap{
+  padding: 6px;
+}
 
 .emoji {
   font-size: 4rem;
@@ -334,3 +358,64 @@ table {
   font-size: 1.5rem;
 }
 
+
+.logCard {
+  border: 1;
+
+  input:focus {
+  background: #bcedf5cc;
+  }
+}
+.containLogCard {
+  display: flex;
+  flex-direction:row-reverse;
+  justify-content: center;
+  margin-top: 10vh;
+
+  img {
+    max-width: 40%;
+  }
+}
+
+.logcard{
+  border: 1px black solid;
+  width: fit-content;
+  background-color: rgba(162, 100, 128, 0.1);
+
+  * {
+    font-size: 2rem;
+    padding: 20px;
+  }
+}
+
+.MuiToggleButtonGroup-root {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.howTo {
+  max-width: 80%;
+  margin: auto;
+  margin-top: 150px;
+  background-color: rgba(179, 197, 190, 0.468);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  padding: 30px;
+  font-size: 1.4rem;
+}
+
+.imageFooterContainer{
+  display: flex;
+  justify-content: space-evenly
+}
+
+.dailyInfo {
+  padding: 4px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  background-color: rgba(179, 197, 190, 0.611);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+h3 {
+  background-color: rgba(196, 243, 109, 0.609);
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
