@@ -42,7 +42,7 @@ img.bg {
   align-items: center;
   margin-top: -4px;
   margin-bottom: -10px;
-  gap: 50px;
+  gap: 110px;
 
   span{
     font-size: 2.5rem;
@@ -252,17 +252,17 @@ table {
 }
 
 .eachSection{ 
-  display: flex;
-  margin: 0 auto;
-  max-width: 100%;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.25rem;
+  /* rem is % the default. Approx base is 16px so rem 1.25 is approx 20px */
+  margin-top: 1.5rem;
 }
 
 .cropCards {
   display: flex;
-  width: 200px;
+  margin: auto;
+  width: 250px;
   z-index: -1;
   background-size: 60%;
   background-position: bottom right;

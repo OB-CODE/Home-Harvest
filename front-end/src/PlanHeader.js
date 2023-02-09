@@ -24,9 +24,8 @@ const PlanHeader = ({ weatherData, location }) => {
 
   return (
     <div className='topBanner'>
-        {isLoadingDaily === true ? <div></div> : <div className="dailyInfo">{dailyWeather.name}, ({dailyWeather.sys.country}) is currently {dailyWeather.main.temp}°C. </div>}
-        {console.log(dailyWeather.weather[0].main)}
-        {console.log(dailyWeather.weather[0].description)}
+        {isLoadingDaily === true ? <div className="dailyInfo"></div> : <div className="dailyInfo">{dailyWeather.name}, ({dailyWeather.sys.country}) is currently {dailyWeather.main.temp}°C. </div>}
+
 
         <div>
           <h1>Let's plan your crops!</h1>
