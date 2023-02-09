@@ -63,18 +63,18 @@ function Crops ({ addCrop, removeCrop, harvestList  }) {
           <tbody>
             Crop Key:
             <tr></tr>
+              <td className='emoji'>☀️ / 🌤️ </td>
               <td className='emoji'> 🌱  </td>
               <td className='emoji'> 🕛  </td>
               <td className='emoji'> 👇  </td>
               <td className='emoji'> ❄️  </td>
-              <td className='emoji'>☀️ / 🌤️ </td>
               <td className='emoji'>📏 </td>
             <tr></tr>
+              <td>Full sun / Shade</td>
               <td> Sow / grow temp ℃</td>
               <td>Days till harvest</td>
               <td>Plant depth cm</td>
               <td>Frost resistance</td>
-              <td>Full sun / Shade</td>
               <td>Distance apart cm</td>
             <tr ></tr>
           </tbody>
@@ -108,11 +108,10 @@ function Crops ({ addCrop, removeCrop, harvestList  }) {
             <div key={index} className='cropName' >{herb.name}</div>
             <div className='cropCards' style={{backgroundImage: `url(${allCrops[herb.name]})`, backgroundRepeat: 'no-repeat'}}>
               <div>
-                <div key={index} className='cropLow'>🌱🟰 {herb.airTemplow} - {herb.airTempHigh} </div>
+                <div key={index} className='cropLow'>🌱🟰 {herb.airTemplow} - {herb.airTempHigh} {herb.sun === true ? <span>☀️</span> : <span>🌤️</span>}</div>
                 <div key={index} className='tillHarvest'>🕛🟰 {herb.tillHarvest}</div>
                 <div key={index} className='tillHarvest'>👇🟰 {herb.depth}</div>
                 <div key={index} className='tillHarvest'>❄️🟰 {herb.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
-                <div key={index} className='tillHarvest'>☀️🟰 {herb.sun === true ? <span>✅</span> : <span>🌤️</span>}</div>
                 <div key={index} className='tillHarvest'>📏🟰 {herb.distance}</div>           
               </div>
             </div>
@@ -130,11 +129,10 @@ function Crops ({ addCrop, removeCrop, harvestList  }) {
             <div key={i} className='cropName' >{vegetable.name}</div>
             <div className='cropCards' style={{backgroundImage: `url(${allCrops[vegetable.name]})`, backgroundRepeat: 'no-repeat'}}>
               <div>
-                <div key={i} className='cropLow'>🌱🟰 {vegetable.airTemplow} - {vegetable.airTempHigh} </div>
+                <div key={i} className='cropLow'>🌱🟰 {vegetable.airTemplow} - {vegetable.airTempHigh} {vegetable.sun === true ? <span>☀️</span> : <span>🌤️</span>}</div>
                 <div key={i} className='tillHarvest'>🕛🟰 {vegetable.tillHarvest}</div>
                 <div key={i} className='tillHarvest'>👇🟰 {vegetable.depth}</div>
                 <div key={i} className='tillHarvest'>❄️🟰 {vegetable.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
-                <div key={i} className='tillHarvest'>☀️🟰 {vegetable.sun === true ? <span>✅</span> : <span>🌤️</span>}</div>
                 <div key={i} className='tillHarvest'>📏🟰 {vegetable.distance}</div>           
               </div>
             </div>
@@ -152,11 +150,11 @@ function Crops ({ addCrop, removeCrop, harvestList  }) {
             <div key={j} className='cropName' >{fruit.name}</div>
             <div className='cropCards' style={{backgroundImage: `url(${allCrops[fruit.name]})`, backgroundRepeat: 'no-repeat'}}>
               <div>
-                <div key={j} className='cropLow'>🌱🟰 {fruit.airTemplow} - {fruit.airTempHigh} </div>
+                <div key={j} className='tillHarvest'></div>
+                <div key={j} className='cropLow'>🌱🟰 {fruit.airTemplow} - {fruit.airTempHigh} {fruit.sun === true ? <span>☀️</span> : <span>🌤️</span>} </div>
                 <div key={j} className='tillHarvest'>🕛🟰 {fruit.tillHarvest}</div>
                 <div key={j} className='tillHarvest'>👇🟰 {fruit.depth}</div>
                 <div key={j} className='tillHarvest'>❄️🟰 {fruit.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
-                <div key={j} className='tillHarvest'>☀️🟰 {fruit.sun === true ? <span>✅</span> : <span>🌤️</span>}</div>
                 <div key={j} className='tillHarvest'>📏🟰 {fruit.distance}</div>           
               </div>
             </div>

@@ -3,11 +3,13 @@ import { useState } from "react";
 
 
 const UserHarvest = ({ removeCrop, harvestList }) => {
+  
   return (
     <div>
       <table border = "1" cellpadding = "2" cellspacing = "2">
         <tbody>
           <tr>
+            <th></th>
             <th></th>
             <th>JAN</th>
             <th>FEB</th>
@@ -25,6 +27,13 @@ const UserHarvest = ({ removeCrop, harvestList }) => {
         
         {harvestList.map((eachCrop, index) => 
           <tr>
+            <th>
+              <tr style={{textAlign: 'center'}}>{eachCrop.name} </tr>
+              <tr><button
+                key={index}
+                onClick={() => removeCrop(eachCrop.name)}
+              >Remove: {eachCrop.name}</button></tr>
+            </th>
             <th>
             <tr>
                 Sow:

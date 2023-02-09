@@ -8,10 +8,11 @@ import Max from "./Max.js";
 import './Plants.scss';
 import Background from "./images/cropBackground.png";
 
-
 function Planner ({ location, setLocation }) {
 
+  // variable for preventing multiple fetch requests.  
   const [isLoading, setIsLoading] = useState(true)
+  // variable for the overall weather data historically. - updated from location input/fetch API. 
   const [weatherData, setWeatherData] = useState({})
   const [monthAvgs, setMonthAvgs] = useState([])
 
@@ -24,6 +25,7 @@ function Planner ({ location, setLocation }) {
      weatherCheck()
   },[location])
 
+  // variable for the users Crops to be stored in.
   const [harvestList, setHarvestList] = useState([])
 
   const addCrop = crop => {
@@ -44,10 +46,9 @@ function Planner ({ location, setLocation }) {
   }
 
   const removeCrop = indexOfCrops => {
-    const updatedCrops = harvestList.filter((crop, index) => index !== indexOfCrops)
+    const updatedCrops = harvestList.filter((crop, index) => crop.name !== indexOfCrops)
     setHarvestList(updatedCrops)
-  }
-  
+  }  
 
   return (
     <div>
@@ -71,10 +72,11 @@ function Planner ({ location, setLocation }) {
       </div>
       
       <div className='yearly'> Yearly Averages for:   {weatherData.updatedLocation}
-        {isLoading === true ? <Loading /> : <Max 
-        weatherData={weatherData}
-        monthAvgs={monthAvgs}
-        setMonthAvgs={setMonthAvgs}
+        {isLoading === true ? <Loading /> : 
+        <Max 
+          weatherData={weatherData}
+          monthAvgs={monthAvgs}
+          setMonthAvgs={setMonthAvgs}
          ></Max>}
       </div>  
       {isLoading === true ? <div></div> : <Chart weatherData={weatherData}/> }
