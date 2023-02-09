@@ -42,7 +42,7 @@ img.bg {
   align-items: center;
   margin-top: -4px;
   margin-bottom: -10px;
-  gap: 110px;
+  gap: 100px;
 
   span{
     font-size: 2.5rem;
@@ -232,6 +232,28 @@ table {
   text-align: center;
   background-color: rgba(190, 161, 112, 0.468);
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.cardContainer:hover {
+  width: 105%;
+  height: 105%;
+  position: relative;
+  top: -5%;
+  left: -5%;
+  box-shadow: black 3px 3px 5px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0% {
+    top: -3%;
+  }
+  50% {
+    top: -4%;
+  }
+  100% {
+    top: -3%;
+  }
 }
 
 .holdAllCrops {
