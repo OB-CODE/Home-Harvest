@@ -9,7 +9,7 @@ import { useState } from "react";
 
 
 
-function Crops ({ addCrop, removeCrop, harvestList  }) {
+function Crops ({ addCrop, removeCrop, harvestList, monthAvgs  }) {
 
   const herbs = [
     { name: 'Basil', airTemplow: 21, airTempHigh: 29, tillHarvest: 60, depth: 0.6, frostT: false, sun: false, distance: '30-55'},
@@ -47,19 +47,18 @@ function Crops ({ addCrop, removeCrop, harvestList  }) {
 
   return (
     <div className='holdAllCrops'>
-      <div className="userCrops">
-        Your Crops to Plant for the Year
-      </div>
+      
 
       <UserHarvest 
         removeCrop={removeCrop}
         harvestList={harvestList}
+        monthAvgs={monthAvgs}
       />
 
       
 
       <div className='months'>
-        <table style={{paddingBottom: '10px'}} border = "1" cellpadding = "2" cellspacing = "2">
+        <table style={{paddingBottom: '10px'}} border = "1" cellPadding = "2" cellSpacing = "2">
           <tbody>
             Crop Key:
             <tr></tr>
@@ -106,17 +105,17 @@ function Crops ({ addCrop, removeCrop, harvestList  }) {
         {herbs.map((herb, index) => 
           <div className='cardContainer'>            
             <div key={index} className='cropName' >{herb.name}</div>
-            <div className='cropCards' style={{backgroundImage: `url(${allCrops[herb.name]})`, backgroundRepeat: 'no-repeat'}}>
+            <div key={index+1} className='cropCards' style={{backgroundImage: `url(${allCrops[herb.name]})`, backgroundRepeat: 'no-repeat'}}>
               <div>
-                <div key={index} className='cropLow'>🌱🟰 {herb.airTemplow} - {herb.airTempHigh} {herb.sun === true ? <span>☀️</span> : <span>🌤️</span>}</div>
-                <div key={index} className='tillHarvest'>🕛🟰 {herb.tillHarvest}</div>
-                <div key={index} className='tillHarvest'>👇🟰 {herb.depth}</div>
-                <div key={index} className='tillHarvest'>❄️🟰 {herb.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
-                <div key={index} className='tillHarvest'>📏🟰 {herb.distance}</div>           
+                <div key={index+2} className='cropLow'>🌱🟰 {herb.airTemplow} - {herb.airTempHigh} {herb.sun === true ? <span>☀️</span> : <span>🌤️</span>}</div>
+                <div key={index+3} className='tillHarvest'>🕛🟰 {herb.tillHarvest}</div>
+                <div key={index+4} className='tillHarvest'>👇🟰 {herb.depth}</div>
+                <div key={index+5} className='tillHarvest'>❄️🟰 {herb.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
+                <div key={index+6} className='tillHarvest'>📏🟰 {herb.distance}</div>           
               </div>
             </div>
-          <button class="button-55"
-            key={index}
+          <button key={index+7} class="button-55"
+          
             onClick={() => addCrop(herb)}
           >Add {herb.name}</button>
         </div>
@@ -124,20 +123,19 @@ function Crops ({ addCrop, removeCrop, harvestList  }) {
       </section> : <div></div> }
 
       {Crops.includes('vegetables') === true ? <section className='eachSection' >
-        {vegetables.map((vegetable, i) => 
+        {vegetables.map((vegetable, index) => 
           <div className='cardContainer'>            
-            <div key={i} className='cropName' >{vegetable.name}</div>
-            <div className='cropCards' style={{backgroundImage: `url(${allCrops[vegetable.name]})`, backgroundRepeat: 'no-repeat'}}>
+            <div key={index} className='cropName' >{vegetable.name}</div>
+            <div key={index+1} className='cropCards' style={{backgroundImage: `url(${allCrops[vegetable.name]})`, backgroundRepeat: 'no-repeat'}}>
               <div>
-                <div key={i} className='cropLow'>🌱🟰 {vegetable.airTemplow} - {vegetable.airTempHigh} {vegetable.sun === true ? <span>☀️</span> : <span>🌤️</span>}</div>
-                <div key={i} className='tillHarvest'>🕛🟰 {vegetable.tillHarvest}</div>
-                <div key={i} className='tillHarvest'>👇🟰 {vegetable.depth}</div>
-                <div key={i} className='tillHarvest'>❄️🟰 {vegetable.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
-                <div key={i} className='tillHarvest'>📏🟰 {vegetable.distance}</div>           
+                <div key={index+2} className='cropLow'>🌱🟰 {vegetable.airTemplow} - {vegetable.airTempHigh} {vegetable.sun === true ? <span>☀️</span> : <span>🌤️</span>}</div>
+                <div key={index+3} className='tillHarvest'>🕛🟰 {vegetable.tillHarvest}</div>
+                <div key={index+4} className='tillHarvest'>👇🟰 {vegetable.depth}</div>
+                <div key={index+5} className='tillHarvest'>❄️🟰 {vegetable.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
+                <div key={index+6} className='tillHarvest'>📏🟰 {vegetable.distance}</div>           
               </div>
             </div>
-          <button class="button-55" 
-            key={i}
+          <button key={index+7} class="button-55" 
             onClick={() => addCrop(vegetable)}
           >Add {vegetable.name} </button>
         </div>
@@ -145,21 +143,19 @@ function Crops ({ addCrop, removeCrop, harvestList  }) {
       </section> : <div></div> }
 
       {Crops.includes('fruits') === true ? <section className='eachSection' >
-        {fruits.map((fruit, j) => 
+        {fruits.map((fruit, index) => 
           <div className='cardContainer'>            
-            <div key={j} className='cropName' >{fruit.name}</div>
-            <div className='cropCards' style={{backgroundImage: `url(${allCrops[fruit.name]})`, backgroundRepeat: 'no-repeat'}}>
+            <div key={index} className='cropName' >{fruit.name}</div>
+            <div key={index+1}  className='cropCards' style={{backgroundImage: `url(${allCrops[fruit.name]})`, backgroundRepeat: 'no-repeat'}}>
               <div>
-                <div key={j} className='tillHarvest'></div>
-                <div key={j} className='cropLow'>🌱🟰 {fruit.airTemplow} - {fruit.airTempHigh} {fruit.sun === true ? <span>☀️</span> : <span>🌤️</span>} </div>
-                <div key={j} className='tillHarvest'>🕛🟰 {fruit.tillHarvest}</div>
-                <div key={j} className='tillHarvest'>👇🟰 {fruit.depth}</div>
-                <div key={j} className='tillHarvest'>❄️🟰 {fruit.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
-                <div key={j} className='tillHarvest'>📏🟰 {fruit.distance}</div>           
+                <div key={index+3} className='cropLow'>🌱🟰 {fruit.airTemplow} - {fruit.airTempHigh} {fruit.sun === true ? <span>☀️</span> : <span>🌤️</span>} </div>
+                <div key={index+4} className='tillHarvest'>🕛🟰 {fruit.tillHarvest}</div>
+                <div key={index+5} className='tillHarvest'>👇🟰 {fruit.depth}</div>
+                <div key={index+6} className='tillHarvest'>❄️🟰 {fruit.frostT === true ? <span>✅</span> : <span>❌</span>}</div>
+                <div key={index+7} className='tillHarvest'>📏🟰 {fruit.distance}</div>           
               </div>
             </div>
-          <button class="button-55"
-            key={j}
+          <button key={index+8} class="button-55"
             onClick={() => addCrop(fruit)}
             >Add {fruit.name}
           </button>

@@ -3,7 +3,7 @@ import React from 'react'
 const Loading = () => {
   return (
     <div className='months'>
-    <table border = "1" cellpadding = "5" cellspacing = "5">
+    <table border = "1" cellPadding = "5" cellSpacing = "5">
       <tbody>
         <tr>
           <th></th>

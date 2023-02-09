@@ -1,5 +1,4 @@
-import React from 'react'
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // const Row = (props) => {
 //   const { mm, Max, Min } = props
@@ -24,11 +23,72 @@ import { useState } from "react";
 //   </table>)
 // }
 
-function  Max ({ weatherData }) {
+function  Max ({ weatherData, setMonthAvgs, monthAvgs }) {
+
+  // function to be used on planer page (not here). Written here as it will take all the data calculated at this page. Maths of averaging the months max and min temps into an overall AVG. Produce an array of 12 elements. 
+  useEffect(() => {
+    async function adjustAverages() {
+      const maxMinAvg = [
+        parseFloat(parseFloat(((parseFloat(weatherData.jan.janMax[0]) + parseFloat(weatherData.jan.janMax[1]) + parseFloat(weatherData.jan.janMax[2]) + parseFloat(weatherData.jan.janMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.jan.janMin[0]) + parseFloat(weatherData.jan.janMin[1]) + parseFloat(weatherData.jan.janMin[2]) + parseFloat(weatherData.jan.janMin[3])) / 4))
+        ).toFixed(2) /2,
+        //ABOVE WORKING!!!!! - returning the avg of both 
+        parseFloat(parseFloat(((parseFloat(weatherData.feb.febMax[0]) + parseFloat(weatherData.feb.febMax[1]) + parseFloat(weatherData.feb.febMax[2]) + parseFloat(weatherData.feb.febMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.feb.febMin[0]) + parseFloat(weatherData.feb.febMin[1]) + parseFloat(weatherData.feb.febMin[2]) + parseFloat(weatherData.feb.febMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.mar.marMax[0]) + parseFloat(weatherData.mar.marMax[1]) + parseFloat(weatherData.mar.marMax[2]) + parseFloat(weatherData.mar.marMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.mar.marMin[0]) + parseFloat(weatherData.mar.marMin[1]) + parseFloat(weatherData.mar.marMin[2]) + parseFloat(weatherData.mar.marMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.apr.aprMax[0]) + parseFloat(weatherData.apr.aprMax[1]) + parseFloat(weatherData.apr.aprMax[2]) + parseFloat(weatherData.apr.aprMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.apr.aprMin[0]) + parseFloat(weatherData.apr.aprMin[1]) + parseFloat(weatherData.apr.aprMin[2]) + parseFloat(weatherData.apr.aprMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.may.mayMax[0]) + parseFloat(weatherData.may.mayMax[1]) + parseFloat(weatherData.may.mayMax[2]) + parseFloat(weatherData.may.mayMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.may.mayMin[0]) + parseFloat(weatherData.may.mayMin[1]) + parseFloat(weatherData.may.mayMin[2]) + parseFloat(weatherData.may.mayMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.jun.junMax[0]) + parseFloat(weatherData.jun.junMax[1]) + parseFloat(weatherData.jun.junMax[2]) + parseFloat(weatherData.jun.junMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.jun.junMin[0]) + parseFloat(weatherData.jun.junMin[1]) + parseFloat(weatherData.jun.junMin[2]) + parseFloat(weatherData.jun.junMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.jul.julMax[0]) + parseFloat(weatherData.jul.julMax[1]) + parseFloat(weatherData.jul.julMax[2]) + parseFloat(weatherData.jul.julMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.jul.julMin[0]) + parseFloat(weatherData.jul.julMin[1]) + parseFloat(weatherData.jul.julMin[2]) + parseFloat(weatherData.jul.julMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.aug.augMax[0]) + parseFloat(weatherData.aug.augMax[1]) + parseFloat(weatherData.aug.augMax[2]) + parseFloat(weatherData.aug.augMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.aug.augMin[0]) + parseFloat(weatherData.aug.augMin[1]) + parseFloat(weatherData.aug.augMin[2]) + parseFloat(weatherData.aug.augMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.sep.sepMax[0]) + parseFloat(weatherData.sep.sepMax[1]) + parseFloat(weatherData.sep.sepMax[2]) + parseFloat(weatherData.sep.sepMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.sep.sepMin[0]) + parseFloat(weatherData.sep.sepMin[1]) + parseFloat(weatherData.sep.sepMin[2]) + parseFloat(weatherData.sep.sepMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.oct.octMax[0]) + parseFloat(weatherData.oct.octMax[1]) + parseFloat(weatherData.oct.octMax[2]) + parseFloat(weatherData.oct.octMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.oct.octMin[0]) + parseFloat(weatherData.oct.octMin[1]) + parseFloat(weatherData.oct.octMin[2]) + parseFloat(weatherData.oct.octMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.nov.novMax[0]) + parseFloat(weatherData.nov.novMax[1]) + parseFloat(weatherData.nov.novMax[2]) + parseFloat(weatherData.nov.novMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.nov.novMin[0]) + parseFloat(weatherData.nov.novMin[1]) + parseFloat(weatherData.nov.novMin[2]) + parseFloat(weatherData.nov.novMin[3])) / 4))
+        ).toFixed(2) /2,
+        parseFloat(parseFloat(((parseFloat(weatherData.dec.decMax[0]) + parseFloat(weatherData.dec.decMax[1]) + parseFloat(weatherData.dec.decMax[2]) + parseFloat(weatherData.dec.decMax[3])) / 4)) 
+        + 
+        parseFloat(((parseFloat(weatherData.dec.decMin[0]) + parseFloat(weatherData.dec.decMin[1]) + parseFloat(weatherData.dec.decMin[2]) + parseFloat(weatherData.dec.decMin[3])) / 4))
+        ).toFixed(2) /2,
+      ]
+      setMonthAvgs(maxMinAvg)
+    }
+    adjustAverages()
+  }, [weatherData])
+  
+  // adjustAverages()
 
   return (
     <div className='months'>
-      <table border = "1" cellpadding = "2" cellspacing = "2">
+      <table border = "1" cellPadding = "2" cellSpacing = "2">
         <tbody>
           <tr>
             <th></th>

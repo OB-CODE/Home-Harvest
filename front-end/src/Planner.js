@@ -84,6 +84,7 @@ function Planner ({ location, setLocation }) {
       harvestList={harvestList}
       addCrop={addCrop}
       removeCrop={removeCrop}
+      monthAvgs={monthAvgs}
       />
     </div>
   )
