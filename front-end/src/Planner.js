@@ -27,7 +27,20 @@ function Planner ({ location, setLocation }) {
   const [harvestList, setHarvestList] = useState([])
 
   const addCrop = crop => {
-    setHarvestList([...harvestList, crop])
+    let alreadyInHarvestList = false
+    console.log(harvestList.length);
+    if (harvestList.length === 0) {
+      setHarvestList([...harvestList, crop])
+    } else if (harvestList.length > 0) {
+      harvestList.forEach((individualCrop) => {
+        if (crop.name === individualCrop.name) {
+          alreadyInHarvestList = true
+       }
+      })
+      if (alreadyInHarvestList === false) {
+        setHarvestList([...harvestList, crop])
+      }
+    }
   }
 
   const removeCrop = indexOfCrops => {
