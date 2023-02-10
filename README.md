@@ -14,7 +14,7 @@ API
 - Use the yearly data to produce tables, graphs and calculate growing conditions for plants. 
 
 <p align="center" width="100%">
-![HomeH1](/images/HomeH1.png)
+![HomeH1](/src/images/HomeH1.png)
 
 <img src="./images/HomeH1.png" alt="" width="30%" heigh="50%"/>
 <img src="./images/HomeH2.png" alt="" width="30%" heigh="50%"/>
