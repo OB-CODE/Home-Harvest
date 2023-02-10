@@ -13,16 +13,11 @@ API
 - Map daily data over a 12 month period. 
 - Use the yearly data to produce tables, graphs and calculate growing conditions for plants. 
 
-![HomeH1 width="30%" heigh="50%"](/front-end/src/images/HomeH1.png)
-![HomeH1](/front-end/src/images/HomeH2.png)
-
-
-<img src="./images/HomeH1.png" alt="" width="30%" heigh="50%"/>
-<img src="./images/HomeH2.png" alt="" width="30%" heigh="50%"/>
+### Overview of the APP
+![Landing page](/front-end/src/images/HomeH1.png)
+![Planning page](/front-end/src/images/HomeH2.png)
 
 ---
-
-
 
 ## :page_facing_up: About
 
@@ -32,15 +27,13 @@ API
 
 ---
 
-
 ## 🗒️ - Planning & Problem Solving
 
-<img src="./images/Plan1.png" alt="drawing" width="100%" heigh="70%"/>
-<p align="center" width="100%">
-<img src="./images/Plan2.png" alt="drawing" width="100%" heigh="70%"/>
-<img src="./images/Plan3.png" alt="drawing" width="100%" heigh="70%"/>
-<img src="./images/Plan4.png" alt="drawing" width="100%" heigh="70%"/>
-</p>
+![Planning 1](/front-end/src/images/Plan1.png)
+![Planning 1](/front-end/src/images/Plan2.png)
+![Planning 1](/front-end/src/images/Plan3.png)
+![Planning 1](/front-end/src/images/Plan4.png)
+
 ---
 
 ## 🧰: Tech
