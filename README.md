@@ -13,13 +13,12 @@ API
 - Map daily data over a 12 month period. 
 - Use the yearly data to produce tables, graphs and calculate growing conditions for plants. 
 
-![HomeH1](/front-end/src/images/HomeH1.png)
+![HomeH1 width="30%" heigh="50%"](/front-end/src/images/HomeH1.png)
+![HomeH1](/front-end/src/images/HomeH2.png)
 
-<p align="center" width="100%">
 
 <img src="./images/HomeH1.png" alt="" width="30%" heigh="50%"/>
 <img src="./images/HomeH2.png" alt="" width="30%" heigh="50%"/>
-</p>
 
 ---
 
