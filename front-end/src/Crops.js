@@ -100,7 +100,7 @@ function Crops ({ addCrop, removeCrop, harvestList, monthAvgs  }) {
       </div>
       <div className="selectFromcrops">
 
-      {Crops.includes('herbs') === true ? <section className='eachSection'>
+      {Crops.includes('herbs') === true ? <div className='eachSection'>
         {herbs.map((herb, index) => 
           <div className='cardContainer'>            
             <div key={index} className='cropName' >{herb.name}</div>
@@ -119,9 +119,9 @@ function Crops ({ addCrop, removeCrop, harvestList, monthAvgs  }) {
           >Add {herb.name}</button>
         </div>
         )}
-      </section> : <div></div> }
+      </div> : <div></div> }
 
-      {Crops.includes('vegetables') === true ? <section className='eachSection' >
+      {Crops.includes('vegetables') === true ? <div className='eachSection' >
         {vegetables.map((vegetable, index) => 
           <div className='cardContainer'>            
             <div key={index} className='cropName' >{vegetable.name}</div>
@@ -139,9 +139,9 @@ function Crops ({ addCrop, removeCrop, harvestList, monthAvgs  }) {
           >Add {vegetable.name} </button>
         </div>
         )}
-      </section> : <div></div> }
+      </div> : <div></div> }
 
-      {Crops.includes('fruits') === true ? <section className='eachSection' >
+      {Crops.includes('fruits') === true ? <div className='eachSection' >
         {fruits.map((fruit, index) => 
           <div className='cardContainer'>            
             <div key={index} className='cropName' >{fruit.name}</div>
@@ -160,7 +160,7 @@ function Crops ({ addCrop, removeCrop, harvestList, monthAvgs  }) {
           </button>
         </div>
         )}
-      </section> : <div></div> }
+      </div> : <div></div> }
 
       </div>
       <div className='spaceHolder'></div>
