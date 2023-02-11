@@ -61,3 +61,8 @@ API
 - Soil temperature readings. 
 - Historical data over longer periods for better averages. 
 - Graph showing the harvest times based on the estimations in each card. 
+
+## Dependencies
+- npx create-react-app
+- npm i react-router-dom
+- npm i sass
