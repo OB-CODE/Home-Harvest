@@ -160,6 +160,40 @@ table {
   font-size: 1.8rem;
 }
 
+@keyframes skeleton-shimmer {
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
+}
+
+.skeleton-cell {
+  height: 1.2rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(200, 200, 200, 0.4) 25%, rgba(230, 230, 230, 0.75) 37%, rgba(200, 200, 200, 0.4) 63%);
+  background-size: 400px 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+
+.skeleton-line {
+  display: inline-block;
+  height: 1rem;
+  width: 220px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(200, 200, 200, 0.4) 25%, rgba(230, 230, 230, 0.75) 37%, rgba(200, 200, 200, 0.4) 63%);
+  background-size: 400px 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+.skeleton-inline {
+  width: 160px;
+}
+
+.weatherError {
+  color: #a12727;
+  font-weight: bold;
+  padding: 12px;
+}
+
 #container {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;

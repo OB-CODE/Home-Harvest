@@ -10,7 +10,9 @@ const Landing = ({ handleLocationChange, location, setLocation }) => {
 
   const navigate = useNavigate()
   const handleClick = () => {
-      navigate('/planner')
+      if (typeof location === 'string' && location.trim() !== '') {
+        navigate('/planner')
+      }
   }
 
   return (

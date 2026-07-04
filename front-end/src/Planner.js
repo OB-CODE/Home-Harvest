@@ -1,4 +1,4 @@
-import locationData from "./locationAndWeatherFetch.js";
+import locationData from "./LocationAndWeatherFetch.js";
 import Loading from "./Loading";
 import Chart from "./Chart";
 import Crops from "./Crops";
@@ -11,19 +11,32 @@ import PlanHeader from "./PlanHeader";
 
 function Planner ({ location, setLocation }) {
 
-  // variable for preventing multiple fetch requests.  
-  const [isLoading, setIsLoading] = useState(true)
-  // variable for the overall weather data historically. - updated from location input/fetch API. 
+  // status of the yearly weather fetch: 'loading' | 'success' | 'error'
+  const [status, setStatus] = useState('loading')
+  // variable for the overall weather data historically. - updated from location input/fetch API.
   const [weatherData, setWeatherData] = useState({})
   const [monthAvgs, setMonthAvgs] = useState([])
 
   useEffect(() => {
+    if (typeof location !== 'string' || location.trim() === '') {
+      setStatus('error')
+      return
+    }
+    let isCurrent = true
+    setStatus('loading')
     async function weatherCheck() {
-      const weatherData = await locationData(location)
-      setWeatherData(weatherData)
-      setIsLoading(false)
+      try {
+        const weatherData = await locationData(location)
+        if (isCurrent) {
+          setWeatherData(weatherData)
+          setStatus('success')
+        }
+      } catch (error) {
+        if (isCurrent) setStatus('error')
+      }
     };
      weatherCheck()
+     return () => { isCurrent = false }
   },[location])
 
   // variable for the users Crops to be stored in.
@@ -68,14 +81,16 @@ function Planner ({ location, setLocation }) {
          />
       
       <div className='yearly'> Yearly Averages for:   {weatherData.updatedLocation}
-        {isLoading === true ? <Loading /> : 
-        <Max 
+        {status === 'loading' && <Loading />}
+        {status === 'error' && <div className="weatherError">Couldn't load weather for that location. Please go back and try another search.</div>}
+        {status === 'success' &&
+        <Max
           weatherData={weatherData}
           monthAvgs={monthAvgs}
           setMonthAvgs={setMonthAvgs}
          ></Max>}
-      </div>  
-      {isLoading === true ? <div></div> : <Chart weatherData={weatherData}/> }
+      </div>
+      {status === 'success' && <Chart weatherData={weatherData}/> }
       <Crops 
       harvestList={harvestList}
       addCrop={addCrop}

@@ -1,5 +1,7 @@
 import React from 'react'
 
+const SkeletonCell = () => <td><div className='skeleton-cell'></div></td>
+
 const Loading = () => {
   return (
     <div className='months'>
@@ -20,57 +22,24 @@ const Loading = () => {
           <th>NOV</th>
           <th>DEC</th>
         </tr>
-        
+
         <tr>
           <td>Avg Max C</td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
+          {Array.from({ length: 12 }).map((_, i) => <SkeletonCell key={`max-${i}`} />)}
         </tr>
 
         <tr>
           <td>Avg Min C</td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
+          {Array.from({ length: 12 }).map((_, i) => <SkeletonCell key={`min-${i}`} />)}
         </tr>
 
         <tr>
           <td>Avg daily Rain MM</td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>      
+          {Array.from({ length: 12 }).map((_, i) => <SkeletonCell key={`rain-${i}`} />)}
         </tr>
       </tbody>
   </table>
-  <div className='loadingWeather'></div> 
+  <div className='loadingWeather'></div>
  <div className='growing'></div>
 
 </div>
@@ -78,6 +47,3 @@ const Loading = () => {
 }
 
 export default Loading
-
-
-{/* <div className='loadingFruits'>🍎  🍋  🍍  🍇 ---  LOADING   --- 🍇  🍍  🍋  🍎</div>  */}
